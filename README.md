@@ -1,5 +1,22 @@
 # README
 
+Things added to the base Rails project:
+
+* vue-turbolinks
+* webpacker=vue
+* annotate
+* pry-rails
+* rspec-rails
+* active-model-serializers
+* haml-rails
+
+To run this, you will need two terminal sessions. In one, run
+```rails s```
+In the other, run
+```bin/webpack-dev-server```
+These commands will start the rails server for the back-end of the application and start the front-end of the application with hot-reloading.
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
