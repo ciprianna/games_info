@@ -1,0 +1,138 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.6
+  Include:
+    - bin/setup
+    - app/**/*.rb
+    - domains/**/*.rb
+    - lib/**/*.rb
+    - providers/**/*.rb
+  Exclude:
+    - db/**/*
+    - domains/**/db/schema.rb
+    - lib/**/*.rake
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+################################ Linting ################################
+
+
+# This gripes about the standard RSpec block expectation syntax
+# but it works fine
+Lint/AmbiguousBlockAssociation:
+  Exclude:
+    - spec/**/*
+
+# BigDecimal.new() is deprecated
+Lint/BigDecimalNew:
+  Enabled: true
+
+################################ Layout ################################
+
+# We use single-tab indentation for our layout. Since RuboCop does not
+# explicitly support tabs, we have to do some disabling and configuring
+# of rules to not have false positives.
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/HeredocIndentation:
+  EnforcedStyle: active_support
+
+Layout/IndentationWidth:
+  Enabled: true
+  Width: 1
+
+Layout/Tab:
+  Enabled: false
+
+################################ Metrics ###############################
+
+Metrics/BlockLength:
+  Exclude:
+    - config/routes/*.rb
+    - spec/**/*_spec.rb
+
+# We have a lot of fixture data in these files so let's ignore them for
+# now until we get a better handle on that.
+Layout:
+  Exclude:
+    - spec/**/*
+
+################################ Naming ################################
+
+Naming/FileName:
+  Exclude:
+    - domains/**/Gemfile
+    - domains/**/Guardfile
+    - domains/**/Rakefile
+    - providers/ec2/lib/Ec2.rb
+    - providers/linode_engine/lib/LinodeEngine.rb
+
+# Rubocop doesn't support conversion functions
+Naming/MethodName:
+  Enabled: false
+
+################################ Style #################################
+
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+# Disabled because we don't need to "worry" about non-English speakers
+Style/AsciiComments:
+  Enabled: false
+
+# I'm using a lot of empty hashes inside of blocks in specs and I don't
+# like mixing them.
+Style/EmptyLiteral:
+  Exclude:
+    - spec/**/*.rb
+    - domains/**/spec/**/*.rb
+
+Style/GlobalVars:
+  Enabled: true
+  AllowedVariables:
+    - "$instance_redis"
+    - "$redis"
+    - "$root_redis"
+    - "$zendesk"
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+# This is conventional for both Cells and the Dry suite
+Style/LambdaCall:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+############################ Documentation ############################
+
+# As much as I would like to require documentation on everything,
+# enabling the documentation cops will introduce too much noise into
+# the output. Some day, we might be able to enable these, but it won't
+# be any time soon.
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false

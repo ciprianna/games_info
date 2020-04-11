@@ -9,11 +9,12 @@ Things added to the base Rails project:
 * rspec-rails
 * active-model-serializers
 * haml-rails
+* rubocop, require: false (copied over base rules from `flywheel-app`)
 
 To run this, you will need two terminal sessions. In one, run
 ```rails s```
 In the other, run
-```bin/webpack-dev-server```
+```yarn start```
 These commands will start the rails server for the back-end of the application and start the front-end of the application with hot-reloading.
 
 
