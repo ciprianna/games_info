@@ -6,12 +6,6 @@ class Api::GamesController < ApiController
 		render json: @games, status: :ok
 	end
 
-	def show
-		@game = Game.find(params[:id])
-
-		render json: @game, status: :ok
-	end
-
 	def create
 		@game = Game.new(game_params)
 
@@ -20,6 +14,12 @@ class Api::GamesController < ApiController
 		else
 			render json: error_response(:bad_request, "Error creating game"), status: :bad_request
 		end
+	end
+
+	def show
+		@game = Game.find(params[:id])
+
+		render json: @game, status: :ok
 	end
 
 	def update

@@ -1,2 +1,19 @@
+# == Schema Information
+#
+# Table name: games
+#
+#  id           :bigint           not null, primary key
+#  release_year :integer
+#  title        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+# Indexes
+#
+#  index_games_on_release_year  (release_year)
+#  index_games_on_title         (title)
+#
 class Game < ApplicationRecord
+	validates :title, presence: true, uniqueness: { case_sensitive: false }
+	validates :release_year, presence: true
 end

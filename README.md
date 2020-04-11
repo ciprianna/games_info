@@ -10,6 +10,8 @@ Things added to the base Rails project:
 * active-model-serializers
 * haml-rails
 * rubocop, require: false (copied over base rules from `flywheel-app`)
+* factory_bot_rails
+* rails-controller-testing
 
 To run this, you will need two terminal sessions. In one, run
 ```rails s```
