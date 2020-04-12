@@ -27,8 +27,6 @@ class Api::GamesController < ApiController
 
 		if @game.update(game_params)
 			render json: @game, status: :no_content
-		else
-			render json: error_response(:bad_request, "Update failed for #{@game.name}: #{params[:errors]}"), status: :bad_request
 		end
 	end
 

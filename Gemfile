@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'simplecov', require: false, group: :test
 end
 
 group :development do
