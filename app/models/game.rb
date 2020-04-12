@@ -3,6 +3,8 @@
 # Table name: games
 #
 #  id           :bigint           not null, primary key
+#  description  :text
+#  image        :string
 #  release_year :integer
 #  title        :string
 #  created_at   :datetime         not null

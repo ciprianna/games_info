@@ -3,6 +3,8 @@
 # Table name: games
 #
 #  id           :bigint           not null, primary key
+#  description  :text
+#  image        :string
 #  release_year :integer
 #  title        :string
 #  created_at   :datetime         not null
@@ -14,5 +16,5 @@
 #  index_games_on_title         (title)
 #
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :title, :release_year
+	attributes :id, :title, :release_year, :image, :description
 end
