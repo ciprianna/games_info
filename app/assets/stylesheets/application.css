@@ -20,7 +20,7 @@
 
  h1 {
 	text-align: center;
-	color: #f95d9b;
+	color: #dc2970;
  }
 
  h2 {
@@ -38,10 +38,38 @@ li {
 	padding-bottom: 0.5rem;
 }
 
+button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background: #161748;
+	color: white;
+	border-radius: 2px;
+	padding: 0.5rem 2rem;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
  .nav-link, .nav-link:visited {
 	display: block;
 	margin-top: 3rem;
 	margin-bottom: 3rem;
 	text-align: center;
 	color: #161748
+}
+
+.error-text {
+	text-align: center;
+	color: #ab0707;
+}
+
+.danger-button {
+	margin-top: 3rem;
+	background-color: #ab0707;
+}
+
+.notice {
+	text-align: center;
+	margin-top: 3rem;
+	margin-bottom: 3rem;
 }

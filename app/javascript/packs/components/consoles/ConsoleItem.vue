@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { getConsole } from '../api/consoles';
+import { getConsole } from '../../api/consoles';
 
 export default {
 	data: function () {

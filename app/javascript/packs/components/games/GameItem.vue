@@ -1,15 +1,19 @@
 <template>
-	<div v-if="game">
-		<h2>{{game.title}}</h2>
-		<p class="subtitle"><i>Released {{game.release_year}}</i></p>
-		<img :src="game.image" :alt="game.title" width="700" height="auto" />
-		<p class="description">{{game.description}}</p>
+	<div>
+		<p v-if="error" class="error-text">{{error}}</p>
+		<div v-if="game">
+			<h2>{{game.title}}</h2>
+			<p class="subtitle"><i>Released {{game.release_year}}</i></p>
+			<img v-if="game.image" :src="game.image" :alt="game.title" width="700" height="auto" />
+			<p v-if="game.description" class="description">{{game.description}}</p>
+			<router-link :to="`/games/${game.id}/edit`" class="nav-link">Edit Game</router-link>
+		</div>
 		<router-link to="/games" class="nav-link">All Games</router-link>
 	</div>
 </template>
 
 <script>
-import { getGame } from '../api/games';
+import { getGame } from '../../api/games';
 
 export default {
 	data: function () {
@@ -20,12 +24,10 @@ export default {
 	},
 
 	created() {
-		// TODO - redirect if no game
 		getGame(this.$route.params.id).then((response) => {
 			this.game = response;
 		}).catch((error) => {
-			this.error = `Uh, oh. Game could not be found. ${error.message}.`
-			console.error(error);
+			this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
 		});
 	}
 }

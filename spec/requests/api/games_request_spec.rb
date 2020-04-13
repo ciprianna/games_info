@@ -25,7 +25,7 @@ RSpec.describe "Games", type: :request do
 			expect(parsed_response[:title]).to eq("Mario Brothers")
 			expect(parsed_response[:release_year]).to eq(1983)
 		end
-		it "returns an error message if body is incorrect" do
+		it "returns an error message from ActiveRecord if post fails" do
 			create(:game)
 			post "/api/games", params: {
 				game: {
@@ -35,7 +35,17 @@ RSpec.describe "Games", type: :request do
 			}
 			expect(response).not_to be_successful
 			parsed_body = response.parsed_body.deep_symbolize_keys
-			expect(parsed_body[:status]).to include("bad_request")
+			expect(parsed_body[:errors][0]).to include("has already been taken")
+		end
+		it "returns an error message from ActiveRecord if data is missing" do
+			post "/api/games", params: {
+				game: {
+					release_year: 1983
+				}
+			}
+			expect(response).not_to be_successful
+			parsed_body = response.parsed_body.deep_symbolize_keys
+			expect(parsed_body[:errors][0]).to include("can't be blank")
 		end
 	end
 
@@ -47,6 +57,12 @@ RSpec.describe "Games", type: :request do
 			parsed_response = response.parsed_body.deep_symbolize_keys
 			expect(parsed_response[:title]).to eq("Mario Brothers")
 			expect(parsed_response[:release_year]).to eq(1983)
+		end
+		it "returns json with error status if game cannot be found" do
+			get "/api/games/10"
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Game not found")
 		end
 	end
 
@@ -64,11 +80,16 @@ RSpec.describe "Games", type: :request do
 			expect(updated_game.title).to eq("Mario Brothers II")
 			expect(updated_game.release_year).to eq(1988)
 		end
-		it "returns an error message if body is incorrect" do
-			game = create(:game)
-			expect{ game = put "/api/games/#{game.id}", params: {
-				game: {}
-			}}.to raise_error(ActionController::ParameterMissing)
+		it "returns json with error status if game cannot be found" do
+			put "/api/games/10", params: {
+				game: {
+					title: "Mario Brothers II",
+					release_year: 1988
+				}
+			}
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Game not found")
 		end
 	end
 
@@ -81,9 +102,11 @@ RSpec.describe "Games", type: :request do
 			deleted_game = Game.find_by(id: game.id)
 			expect(deleted_game).to be_nil
 		end
-		it "returns an error message if record cannot be found" do
-			create(:game)
-			expect{ delete "/api/games/asdf"}.to raise_error(ActiveRecord::RecordNotFound)
+		it "returns json with error status if game cannot be found" do
+			delete "/api/games/10"
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Game not found")
 		end
 	end
 end

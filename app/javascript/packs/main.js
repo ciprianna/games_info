@@ -3,20 +3,18 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from '../app.vue';
 import Welcome from './components/Welcome';
-import GameList from './components/GameList'
-import GameItem from './components/GameItem'
-import GameForm from './components/GameForm'
-import ConsoleList from './components/ConsoleList';
-import ConsoleItem from './components/ConsoleItem';
+import { GameList, GameItem, NewGame, EditGame } from './components/games';
+import { ConsoleList, ConsoleItem } from './components/consoles';
 
 Vue.use(TurbolinksAdapter);
 Vue.use(VueRouter);
 
 const routes = [
 	{ path: '/', component: Welcome },
-	{ path: '/games/new', component: GameForm },
-	{ path: '/games/:id', component: GameItem },
-	{ path: '/games', component: GameList },
+	{ path: '/games/new', component: NewGame },
+	{ path: '/games/:id/edit', name: 'edit-game', component: EditGame },
+	{ path: '/games/:id', name: 'show-game', component: GameItem },
+	{ path: '/games', name: 'games-list', component: GameList },
 	{ path: '/consoles', component: ConsoleList },
 	{ path: '/consoles/:id', component: ConsoleItem }
 ];

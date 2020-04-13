@@ -8,9 +8,7 @@
 </template>
 
 <script>
-import GameList from './packs/components/GameItem'
 export default {
-	components: { GameList },
 	data: function () {
 		return {
 			message: "OmaGames"

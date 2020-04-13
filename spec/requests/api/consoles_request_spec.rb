@@ -22,7 +22,7 @@ RSpec.describe "Api::Consoles", type: :request do
 			parsed_response = response.parsed_body.deep_symbolize_keys
 			expect(parsed_response[:name]).to eq("Nintendo Switch")
 		end
-		it "returns an error message if body is incorrect" do
+		it "returns an error message from ActiveRecord if post fails" do
 			create(:console)
 			post "/api/consoles", params: {
 				console: {
@@ -31,7 +31,17 @@ RSpec.describe "Api::Consoles", type: :request do
 			}
 			expect(response).not_to be_successful
 			parsed_body = response.parsed_body.deep_symbolize_keys
-			expect(parsed_body[:status]).to include("bad_request")
+			expect(parsed_body[:errors][0]).to include("has already been taken")
+		end
+		it "returns an error message from ActiveRecord if data is missing" do
+			post "/api/consoles", params: {
+				console: {
+					fake_field: "Xbox"
+				}
+			}
+			expect(response).not_to be_successful
+			parsed_body = response.parsed_body.deep_symbolize_keys
+			expect(parsed_body[:errors][0]).to include("can't be blank")
 		end
 	end
 
@@ -42,6 +52,12 @@ RSpec.describe "Api::Consoles", type: :request do
 			expect(response).to be_successful
 			parsed_response = response.parsed_body.deep_symbolize_keys
 			expect(parsed_response[:name]).to eq("Xbox")
+		end
+		it "returns json with error status if console cannot be found" do
+			get "/api/consoles/10"
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Console not found")
 		end
 	end
 
@@ -63,6 +79,16 @@ RSpec.describe "Api::Consoles", type: :request do
 				console: {}
 			}}.to raise_error(ActionController::ParameterMissing)
 		end
+		it "returns json with error status if console cannot be found" do
+			put "/api/consoles/10", params: {
+				console: {
+					name: "Xbox"
+				}
+			}
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Console not found")
+		end
 	end
 
 	describe "DELETE /api/consoles/:id" do
@@ -74,9 +100,11 @@ RSpec.describe "Api::Consoles", type: :request do
 			deleted_console = Console.find_by(id: console.id)
 			expect(deleted_console).to be_nil
 		end
-		it "returns an error message if record cannot be found" do
-			create(:console)
-			expect{ delete "/api/consoles/asdf"}.to raise_error(ActiveRecord::RecordNotFound)
+		it "returns json with error status if console cannot be found" do
+			delete "/api/consoles/10"
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Console not found")
 		end
 	end
 end
