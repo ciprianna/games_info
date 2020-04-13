@@ -1,25 +1,32 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-	<GameInfo />
+    <h1>
+		<router-link to="/" class="home-link">{{ message }}</router-link>
+	</h1>
+	<router-view></router-view>
   </div>
 </template>
 
 <script>
-import GameInfo from './packs/components/GameItem'
+import GameList from './packs/components/GameItem'
 export default {
-	components: { GameInfo },
+	components: { GameList },
 	data: function () {
 		return {
-			message: "Game Listing!"
+			message: "Gamaha"
 		}
 	}
 }
 </script>
 
 <style scoped>
+a {
+	text-decoration: none;
+}
 p {
-  font-size: 2em;
-  text-align: center;
+	text-align: center;
+}
+.home-link {
+	color:  #f95d9b;
 }
 </style>

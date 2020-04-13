@@ -1,12 +1,31 @@
-import TurbolinksAdapter from 'vue-turbolinks'
-import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
+import TurbolinksAdapter from 'vue-turbolinks';
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import App from '../app.vue';
+import GameList from './components/GameList'
+import GameItem from './components/GameItem'
+import Welcome from './components/Welcome';
 
-Vue.use(TurbolinksAdapter)
+Vue.use(TurbolinksAdapter);
+Vue.use(VueRouter);
+
+const routes = [
+	{ path: '/', component: Welcome },
+	{ path: '/games/:id', component: GameItem },
+	{ path: '/games', component: GameList },
+	// { path: '/consoles', component: ConsoleList },
+	// { path: '/consoles/:id', component: ConsoleItem }
+];
+
+const router = new VueRouter({
+	// base: __dirname,
+	routes
+});
 
 document.addEventListener('turbolinks:load', () => {
   new Vue({
+	router,
     el: '#main',
-    components: { App }
+    render: h => h(App)
   })
 })

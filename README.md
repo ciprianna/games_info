@@ -13,6 +13,7 @@ Things added to the base Rails project:
 * factory_bot_rails
 * rails-controller-testing
 * simplecov
+* vue-router
 
 To run this, you will need two terminal sessions. In one, run
 ```rails s```

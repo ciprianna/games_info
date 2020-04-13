@@ -17,3 +17,24 @@
  body {
 	 font-family: Verdana, Geneva, Tahoma, sans-serif;
  }
+
+ h1 {
+	text-align: center;
+	color: #f95d9b;
+ }
+
+ h2 {
+	 text-align: center;
+	 color: #478559;
+ }
+
+ a, a:visited {
+	color: #085a7b
+}
+
+ .nav-link, .nav-link:visited {
+	display: block;
+	margin-top: 3rem;
+	text-align: center;
+	color: #161748
+}
