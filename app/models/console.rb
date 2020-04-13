@@ -12,4 +12,5 @@
 #  index_consoles_on_name  (name)
 #
 class Console < ApplicationRecord
+	validates :name, presence: true, uniqueness: { case_sensitive: false }
 end

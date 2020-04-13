@@ -21,5 +21,7 @@ FactoryBot.define do
 	factory :game do
 		title "Mario Brothers"
 		release_year 1983
+		image "image.link"
+		description "Mario Brothers Description"
 	end
 end

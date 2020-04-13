@@ -13,6 +13,6 @@
 #
 FactoryBot.define do
   factory :console do
-    name "MyString"
+    name "Xbox"
   end
 end

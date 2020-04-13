@@ -13,7 +13,7 @@ export default {
 	components: { GameList },
 	data: function () {
 		return {
-			message: "Gamaha"
+			message: "OmaGames"
 		}
 	}
 }

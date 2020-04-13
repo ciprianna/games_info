@@ -1,9 +1,9 @@
 <template>
 	<div>
-		<h2 class="game-info">Games</h2>
-		<ul class="games-list">
-			<li v-for="game in games" :key="game.id">
-				<router-link :to="`/games/${game.id}`">{{game.title}}, {{game.release_year}}</router-link>
+		<h2 class="game-info">Consoles</h2>
+		<ul class="console-list">
+			<li v-for="console in consoles" :key="console.id">
+				<router-link :to="`/consoles/${console.id}`">{{console.name}}</router-link>
 			</li>
 		</ul>
 		<router-link to="/" class="nav-link">Home</router-link>
@@ -11,19 +11,19 @@
 </template>
 
 <script>
-import { getGames } from '../api/games';
+import { getConsoles } from '../api/consoles';
 
 export default {
 	data: function () {
 		return {
-			games: [],
+			consoles: [],
 			error: undefined
 		}
 	},
 
 	created() {
-		getGames().then((response) => {
-			this.games = response;
+		getConsoles().then((response) => {
+			this.consoles = response;
 		}).catch((error) => {
 			this.error = `Uh, oh. Something went wrong fetching games. ${error.message}.`
 			console.error(error);
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style scoped>
-.games-list {
+.console-list {
 	text-align: center;
 	list-style: none;
 	padding-inline-start: 0;

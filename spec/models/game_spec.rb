@@ -43,4 +43,30 @@ RSpec.describe Game, type: :model do
 			expect(duplicate.errors[:title]).to include("has already been taken")
 		end
 	end
+
+	describe "image" do
+		it "saves correctly" do
+			expect(subject).to be_valid
+			expect(subject[:image]).to eq("image.link")
+		end
+		it "can be nil" do
+			subject.image = nil
+			subject.save
+			expect(subject).to be_valid
+			expect(subject[:image]).to be_nil
+		end
+	end
+
+	describe "description" do
+		it "saves correctly" do
+			expect(subject).to be_valid
+			expect(subject[:description]).to eq("Mario Brothers Description")
+		end
+		it "can be nil" do
+			subject.description = nil
+			subject.save
+			expect(subject).to be_valid
+			expect(subject[:description]).to be_nil
+		end
+	end
 end

@@ -64,3 +64,7 @@ publishers = [
 games.each do |game|
 	Game.find_or_create_by(title: game[:title], release_year: game[:release_year], image: game[:image], description: game[:description])
 end
+
+consoles.each do |console|
+	Console.find_or_create_by(name: console[:name])
+end

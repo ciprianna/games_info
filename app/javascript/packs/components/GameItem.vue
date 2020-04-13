@@ -4,7 +4,7 @@
 		<p class="subtitle"><i>Released {{game.release_year}}</i></p>
 		<img :src="game.image" :alt="game.title" width="700" height="auto" />
 		<p class="description">{{game.description}}</p>
-		<router-link to="/games" class="nav-link">Return to All Games</router-link>
+		<router-link to="/games" class="nav-link">All Games</router-link>
 	</div>
 </template>
 
@@ -37,11 +37,6 @@ img {
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 80%;
-}
-a {
-	display: block;
-	margin-top: 3rem;
-	text-align: center;
 }
 .subtitle {
 	text-align: center;

@@ -29,12 +29,19 @@
  }
 
  a, a:visited {
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
 	color: #085a7b
+}
+
+li {
+	padding-bottom: 0.5rem;
 }
 
  .nav-link, .nav-link:visited {
 	display: block;
 	margin-top: 3rem;
+	margin-bottom: 3rem;
 	text-align: center;
 	color: #161748
 }

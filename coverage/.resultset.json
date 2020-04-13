@@ -247,10 +247,51 @@
           null
         ]
       },
+      "/Users/cipriannaengel/code/games_info/spec/factories/consoles.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/cipriannaengel/code/games_info/spec/factories/game_factory.rb": {
         "lines": [
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
           1,
           1,
           1,
@@ -265,7 +306,14 @@
           1,
           1,
           1,
+          1,
           null,
+          null
+        ]
+      },
+      "/Users/cipriannaengel/code/games_info/app/helpers/api/consoles_helper.rb": {
+        "lines": [
+          1,
           null
         ]
       },
@@ -283,6 +331,25 @@
       },
       "/Users/cipriannaengel/code/games_info/app/helpers/welcome_helper.rb": {
         "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/cipriannaengel/code/games_info/spec/helpers/games_helper_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
           1,
           null
         ]
@@ -306,10 +373,8 @@
           null
         ]
       },
-      "/Users/cipriannaengel/code/games_info/spec/models/game_spec.rb": {
+      "/Users/cipriannaengel/code/games_info/spec/models/console_spec.rb": {
         "lines": [
-          null,
-          null,
           null,
           null,
           null,
@@ -354,6 +419,109 @@
           null
         ]
       },
+      "/Users/cipriannaengel/code/games_info/app/models/console.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cipriannaengel/code/games_info/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/cipriannaengel/code/games_info/spec/models/game_spec.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          9,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/cipriannaengel/code/games_info/app/models/game.rb": {
         "lines": [
           null,
@@ -371,20 +539,101 @@
           null,
           null,
           null,
+          null,
+          null,
           1,
           1,
           1,
           null
         ]
       },
-      "/Users/cipriannaengel/code/games_info/app/models/application_record.rb": {
+      "/Users/cipriannaengel/code/games_info/spec/requests/api/consoles_request_spec.rb": {
         "lines": [
           1,
+          null,
           1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          2,
+          null,
+          null,
           null
         ]
       },
-      "/Users/cipriannaengel/code/games_info/spec/requests/games_request_spec.rb": {
+      "/Users/cipriannaengel/code/games_info/spec/requests/api/games_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -492,6 +741,67 @@
           null
         ]
       },
+      "/Users/cipriannaengel/code/games_info/app/controllers/api/consoles_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          4,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/cipriannaengel/code/games_info/app/serializers/console_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
       "/Users/cipriannaengel/code/games_info/app/controllers/api/games_controller.rb": {
         "lines": [
           null,
@@ -571,12 +881,14 @@
           null,
           null,
           null,
+          null,
+          null,
           1,
           1,
           null
         ]
       }
     },
-    "timestamp": 1586670207
+    "timestamp": 1586747480
   }
 }
