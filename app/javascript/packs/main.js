@@ -2,9 +2,10 @@ import TurbolinksAdapter from 'vue-turbolinks';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import App from '../app.vue';
+import Welcome from './components/Welcome';
 import GameList from './components/GameList'
 import GameItem from './components/GameItem'
-import Welcome from './components/Welcome';
+import GameForm from './components/GameForm'
 import ConsoleList from './components/ConsoleList';
 import ConsoleItem from './components/ConsoleItem';
 
@@ -13,6 +14,7 @@ Vue.use(VueRouter);
 
 const routes = [
 	{ path: '/', component: Welcome },
+	{ path: '/games/new', component: GameForm },
 	{ path: '/games/:id', component: GameItem },
 	{ path: '/games', component: GameList },
 	{ path: '/consoles', component: ConsoleList },

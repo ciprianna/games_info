@@ -6,6 +6,7 @@
 				<router-link :to="`/games/${game.id}`">{{game.title}}, {{game.release_year}}</router-link>
 			</li>
 		</ul>
+		<router-link to="/games/new" class="nav-link">Add New Game</router-link>
 		<router-link to="/" class="nav-link">Home</router-link>
 	</div>
 </template>
