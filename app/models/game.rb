@@ -16,6 +16,9 @@
 #  index_games_on_title         (title)
 #
 class Game < ApplicationRecord
+	has_many :game_consoles
+	has_many :consoles, through: :game_consoles
+
 	validates :title, presence: true, uniqueness: { case_sensitive: false }
 	validates :release_year, presence: true
 end

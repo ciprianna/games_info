@@ -38,5 +38,13 @@ RSpec.describe Console, type: :model do
 			expect(duplicate).not_to be_valid
 			expect(duplicate.errors[:name]).to include("has already been taken")
 		end
+
+		describe "#games" do
+			it "associates correctly" do
+				game = create(:game)
+				subject.games << game
+				expect(subject.games).to eq([game])
+			end
+		end
 	end
 end

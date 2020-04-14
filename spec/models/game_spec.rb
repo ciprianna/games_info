@@ -20,7 +20,7 @@ require "rails_helper"
 RSpec.describe Game, type: :model do
 	subject { create(:game) }
 
-	describe "title" do
+	describe "#title" do
 		it "saves correctly" do
 			expect(subject).to be_valid
 		end
@@ -44,7 +44,7 @@ RSpec.describe Game, type: :model do
 		end
 	end
 
-	describe "image" do
+	describe "#image" do
 		it "saves correctly" do
 			expect(subject).to be_valid
 			expect(subject[:image]).to eq("image.link")
@@ -57,7 +57,7 @@ RSpec.describe Game, type: :model do
 		end
 	end
 
-	describe "description" do
+	describe "#description" do
 		it "saves correctly" do
 			expect(subject).to be_valid
 			expect(subject[:description]).to eq("Mario Brothers Description")
@@ -67,6 +67,14 @@ RSpec.describe Game, type: :model do
 			subject.save
 			expect(subject).to be_valid
 			expect(subject[:description]).to be_nil
+		end
+	end
+
+	describe "#consoles" do
+		it "associates correctly" do
+			console = create(:console)
+			subject.consoles << console
+			expect(subject.consoles).to eq([console])
 		end
 	end
 end
