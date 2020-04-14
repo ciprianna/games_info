@@ -20,17 +20,19 @@ export default {
 	},
 	data: function () {
 		return {
-			game: undefined,
+			game: this.$route.params.game,
 			error: undefined
 		}
 	},
 
 	created() {
-		getGame(this.$route.params.id).then((response) => {
-			this.game = response;
-		}).catch((error) => {
-			this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
-		});
+		if(!this.game) {
+			getGame(this.$route.params.id).then((response) => {
+				this.game = response;
+			}).catch((error) => {
+				this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
+			});
+		}
 	},
 
 	methods: {

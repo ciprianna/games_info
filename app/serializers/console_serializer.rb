@@ -12,5 +12,5 @@
 #  index_consoles_on_name  (name)
 #
 class ConsoleSerializer < ActiveModel::Serializer
-	attributes :id, :name
+	attributes :id, :name, :games
 end

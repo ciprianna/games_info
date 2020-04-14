@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<p v-if="error" class="error-text">{{error}}</p>
 		<h2 class="game-info">Consoles</h2>
 		<ul class="console-list">
 			<li v-for="console in consoles" :key="console.id">
@@ -25,8 +26,7 @@ export default {
 		getConsoles().then((response) => {
 			this.consoles = response;
 		}).catch((error) => {
-			this.error = `Uh, oh. Something went wrong fetching games. ${error.message}.`
-			console.error(error);
+			this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
 		});
 	}
 }

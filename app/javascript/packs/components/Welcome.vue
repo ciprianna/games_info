@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h2>Welcome</h2>
+		<img src="../../../assets/images/mario.png" alt="Mario jumping" title="Mario jumping" width="400" height="auto" />
 		<p>Let's look at some game info!</p>
 		<ul class="pages">
 			<li v-for="page in pages" :key="page">

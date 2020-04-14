@@ -5,6 +5,7 @@ import App from '../app.vue';
 import Welcome from './components/Welcome';
 import { GameList, GameItem, NewGame, EditGame } from './components/games';
 import { ConsoleList, ConsoleItem } from './components/consoles';
+import AddConsole from './components/game_consoles/AddConsole';
 
 Vue.use(TurbolinksAdapter);
 Vue.use(VueRouter);
@@ -12,11 +13,12 @@ Vue.use(VueRouter);
 const routes = [
 	{ path: '/', component: Welcome },
 	{ path: '/games/new', component: NewGame },
+	{ path: '/games/:id/consoles', name: 'add-console', component: AddConsole },
 	{ path: '/games/:id/edit', name: 'edit-game', component: EditGame },
 	{ path: '/games/:id', name: 'show-game', component: GameItem },
 	{ path: '/games', name: 'games-list', component: GameList },
 	{ path: '/consoles', component: ConsoleList },
-	{ path: '/consoles/:id', component: ConsoleItem }
+	{ path: '/consoles/:id', component: ConsoleItem },
 ];
 
 const router = new VueRouter({

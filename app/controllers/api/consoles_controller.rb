@@ -15,7 +15,7 @@ class Api::ConsolesController < ApplicationController
 	end
 
 	def show
-		@console = Console.find_by(id: params[:id])
+		@console = Console.includes(:games).find_by(id: params[:id])
 
 		if @console
 			render json: @console

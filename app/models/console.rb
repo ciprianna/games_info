@@ -12,7 +12,7 @@
 #  index_consoles_on_name  (name)
 #
 class Console < ApplicationRecord
-	has_many :game_consoles
+	has_many :game_consoles, dependent: :destroy
 	has_many :games, through: :game_consoles
 
 	validates :name, presence: true, uniqueness: { case_sensitive: false }

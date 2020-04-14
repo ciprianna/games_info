@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<p v-if="error" class="error-text">{{error}}</p>
 		<p v-if="message" class="notice">{{message}}</p>
 		<h2 class="game-info">Games</h2>
 		<ul class="games-list">
@@ -28,8 +29,7 @@ export default {
 		getGames().then((response) => {
 			this.games = response;
 		}).catch((error) => {
-			this.error = `Uh, oh. Something went wrong fetching games. ${error.message}.`
-			console.error(error);
+			this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
 		});
 	}
 }

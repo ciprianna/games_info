@@ -1,0 +1,6 @@
+%h2 What consoles should #{@game[:title]} be played on?
+= form_with model: @game_console do |form|
+	= form.collection_check_boxes :console_id, Console.all, :id, :name do |console|
+		%div
+			= console.check_box({ checked: !@game.consoles.find_by(id: :id).nil? })
+			= console.label

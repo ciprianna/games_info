@@ -16,5 +16,5 @@
 #  index_games_on_title         (title)
 #
 class GameSerializer < ActiveModel::Serializer
-	attributes :id, :title, :release_year, :image, :description
+	attributes :id, :title, :release_year, :image, :description, :consoles
 end

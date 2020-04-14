@@ -109,4 +109,46 @@ RSpec.describe "Games", type: :request do
 			expect(parsed_response[:errors][0]).to include("Game not found")
 		end
 	end
+
+	describe "PUT /api/games/:id/console_associations" do
+		it "returns a success status" do
+			game = create(:game)
+			console1 = create(:console)
+			console2 = Console.create(name: "Wii")
+			put "/api/games/#{game.id}/console_assocations", params: {
+				game_consoles: [console1.id, console2.id]
+			}
+
+			expect(response).to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:consoles].first[:id]).to eq(console1.id)
+			expect(parsed_response[:consoles].last[:id]).to eq(console2.id)
+		end
+		it "returns json with error status if game cannot be found" do
+			create(:game)
+			console1 = create(:console)
+			console2 = Console.create(name: "Wii")
+			put "/api/games/10/console_assocations", params: {
+				game_consoles: [console1.id, console2.id]
+			}
+			expect(response).not_to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:errors][0]).to include("Game not found")
+		end
+		it "will remove existing associations" do
+			game = create(:game)
+			console1 = create(:console)
+			game.consoles << console1
+			expect(game.consoles).to eq([console1])
+
+			console2 = Console.create(name: "Wii")
+			put "/api/games/#{game.id}/console_assocations", params: {
+				game_consoles: [console2.id]
+			}
+			expect(response).to be_successful
+			parsed_response = response.parsed_body.deep_symbolize_keys
+			expect(parsed_response[:consoles].first[:id]).to eq(console2.id)
+			expect(parsed_response[:consoles].count).to eq(1)
+		end
+	end
 end

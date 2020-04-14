@@ -1,0 +1,2 @@
+module GameConsolesHelper
+end

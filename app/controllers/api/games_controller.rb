@@ -17,7 +17,7 @@ class Api::GamesController < ApiController
 	end
 
 	def show
-		@game = Game.find_by(id: params[:id])
+		@game = Game.includes(:consoles).order("consoles.name").find_by(id: params[:id])
 
 		if @game
 			render json: @game
@@ -37,6 +37,18 @@ class Api::GamesController < ApiController
 		end
 	end
 
+	def console_assocations
+		@game = Game.find_by(id: params[:id])
+
+		if @game.nil?
+			render json: { errors: ["Game not found"] }, status: :not_found
+		else
+			consoles = Console.where(id: params[:game_consoles])
+			@game.consoles = consoles
+			render json: @game
+		end
+	end
+
 	def destroy
 		@game = Game.find_by(id: params[:id])
 
@@ -51,6 +63,6 @@ class Api::GamesController < ApiController
 	private
 
 	def game_params
-		params.require(:game).permit(:title, :release_year)
+		params.require(:game).permit(:title, :release_year, :image, :description, :game_consoles)
 	end
 end

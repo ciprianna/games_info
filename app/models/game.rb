@@ -16,9 +16,16 @@
 #  index_games_on_title         (title)
 #
 class Game < ApplicationRecord
-	has_many :game_consoles
+	has_many :game_consoles, dependent: :destroy
 	has_many :consoles, through: :game_consoles
 
 	validates :title, presence: true, uniqueness: { case_sensitive: false }
 	validates :release_year, presence: true
+
+	def list_all_consoles
+		Console.all.map do |console|
+			match = consoles.find_by(id: console.id)
+			console.associated = match.nil?
+		end
+	end
 end
