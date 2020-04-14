@@ -43,9 +43,6 @@ export default {
 		}
 		getConsoles().then((response) => {
 			this.consoles = response;
-			// this.consoles = response.filter(consoleItem => {
-			// 	return this.game.consoles.filter(gameConsole => gameConsole.id === consoleItem.id).length === 0;
-			// });
 		}).catch((error) => {
 			this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
 		})
@@ -55,7 +52,6 @@ export default {
 		addConsole() {
 			addConsoles({ game_id: this.game.id, console_ids: this.selectedConsoles }).then((response) => {
 				this.$router.push({ name: 'show-game', params: { message: `${this.game.title} consoles successfully updated!`} });
-				// this.message = `${this.game.title} consoles successfully updated!`;
 			}).catch((error) => {
 				this.error = `Uh, oh. Something went wrong. ${error.response.data.errors}.`
 			});
@@ -65,7 +61,5 @@ export default {
 </script>
 
 <style scoped>
-.inline {
-	display: inline;
-}
+
 </style>
