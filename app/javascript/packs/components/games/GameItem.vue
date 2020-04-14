@@ -14,7 +14,6 @@
 				</li>
 			</ul>
 			<router-link :to="`/games/${game.id}/consoles`" class="nav-link">Add Game To Console</router-link>
-			<!-- <a :href="`/game_consoles/new?id=${game.id}`" class="nav-link">Add Game To Console</a> -->
 		</div>
 		<router-link to="/games" class="nav-link">All Games</router-link>
 	</div>

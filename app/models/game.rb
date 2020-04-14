@@ -21,11 +21,4 @@ class Game < ApplicationRecord
 
 	validates :title, presence: true, uniqueness: { case_sensitive: false }
 	validates :release_year, presence: true
-
-	def list_all_consoles
-		Console.all.map do |console|
-			match = consoles.find_by(id: console.id)
-			console.associated = match.nil?
-		end
-	end
 end
