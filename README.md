@@ -20,6 +20,7 @@ The following npm packages were added to the project:
 
 ## Running Locally
 
+### Setup
 To get started, set up the package managers and databases. Run the following in the root of the project folder.
 Step 1: Install the Gems
 ```
@@ -34,6 +35,7 @@ Step 3: Setup and seed the database. There are existing games and consoles seede
 rails db:setup
 ```
 
+### Running
 To run this, you will need two terminal sessions. In one, run
 
 ```
@@ -53,5 +55,7 @@ These commands will start the rails server for the back-end of the application a
 ```
 bin/rspec
 ```
+
+
 
 💻🎮🕹 HAVE FUN 🕹🎮💻
